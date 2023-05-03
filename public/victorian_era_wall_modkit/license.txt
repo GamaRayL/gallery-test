@@ -1,0 +1,11 @@
+Model Information:
+* title:	Victorian Era Wall Modkit
+* source:	https://sketchfab.com/3d-models/victorian-era-wall-modkit-eb2f39e569ae4fe2bd5c3676c4286a25
+* author:	Okapiguy (https://sketchfab.com/Okapiguy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Victorian Era Wall Modkit" (https://sketchfab.com/3d-models/victorian-era-wall-modkit-eb2f39e569ae4fe2bd5c3676c4286a25) by Okapiguy (https://sketchfab.com/Okapiguy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

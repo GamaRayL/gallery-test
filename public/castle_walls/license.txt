@@ -1,0 +1,11 @@
+Model Information:
+* title:	Castle Walls
+* source:	https://sketchfab.com/3d-models/castle-walls-028c96a9a4854edfbb2305835b3aca09
+* author:	shadowdraak (https://sketchfab.com/shadowdraak)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Castle Walls" (https://sketchfab.com/3d-models/castle-walls-028c96a9a4854edfbb2305835b3aca09) by shadowdraak (https://sketchfab.com/shadowdraak) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
