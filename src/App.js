@@ -1,13 +1,25 @@
-import { Canvas } from "@react-three/fiber";
-import { MeshReflectorMaterial, OrbitControls, PointerLockControls } from "@react-three/drei";
+import { Canvas, useLoader } from "@react-three/fiber";
+import {
+  MeshReflectorMaterial,
+  OrbitControls,
+  PointerLockControls,
+} from "@react-three/drei";
 import "./App.css";
 import { Suspense, useEffect, useState } from "react";
 import Plane from "./Plane";
 import Wall from "./Wall";
 import WallClassic from "./models/WallClassic";
+import { RepeatWrapping, TextureLoader } from "three";
 
 const App = () => {
   const [showInstructions, setShowInstructions] = useState(true);
+  const texture = useLoader(TextureLoader, "textures/plane1_baseColor.jpeg");
+
+  if (texture) {
+    texture.wrapS = texture.wrapT = RepeatWrapping;
+    texture.repeat.set(2, 2);
+    texture.anisotropy = 16;
+  }
 
   function pointerlockchange() {
     setShowInstructions(!showInstructions);
@@ -41,26 +53,36 @@ const App = () => {
         <Suspense fallback={null}>
           {/* <Frame /> */}
           <Plane />
+
           <WallClassic />
           <group>
-            <Wall position={[0, 20, -50]} />
-            <Wall position={[50, 20, 0]} rotation={[0, -Math.PI * 0.5, 0]} />
-            <Wall position={[0, 20, -50]} />
-            <mesh rotation={[-Math.PI / 2, 0, 0]}>
-              <planeGeometry args={[50, 50]} />
-              <MeshReflectorMaterial
-                blur={[300, 100]}
-                resolution={2048}
-                mixBlur={1}
-                mixStrength={50}
-                roughness={1}
-                depthScale={1.2}
-                minDepthThreshold={0.4}
-                maxDepthThreshold={1.4}
-                color="#050505"
-                metalness={0.5}
-              />
-            </mesh>
+            {/* <Wall position={[0, 20, -50]} /> */}
+            <WallClassic position={[0, 0, -50]} image="1.jpg" />
+            <WallClassic position={[-48, 0, -50]} image="2.jpg" />
+            <WallClassic
+              position={[50, 0, 0]}
+              rotation={[0, Math.PI, 0]}
+              image="3.jpg"
+            />
+            <WallClassic
+              position={[50, 0, -48]}
+              rotation={[0, Math.PI, 0]}
+              image="4.jpg"
+            />
+            <WallClassic
+              position={[-50, 0, 0]}
+              rotation={[0, -Math.PI * 2, 0]}
+              image="5.jpg"
+            />
+            <WallClassic
+              position={[-50, 0, 48]}
+              rotation={[0, -Math.PI * 2, 0]}
+              image="6.jpg"
+            />
+            {/* <mesh position={[0, 20, -50]}>
+              <boxGeometry args={[100, 40, 0.5]} />
+              <meshStandardMaterial color={"gray"} />
+            </mesh> */}
           </group>
           {/* <Plane2 /> */}
         </Suspense>

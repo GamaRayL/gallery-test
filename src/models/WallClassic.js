@@ -4,16 +4,17 @@ import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 
 function Model(props) {
+  const { position, rotation, image } = props;
   const { nodes, materials } = useGLTF("/victorian_era_wall_modkit/scene.gltf");
-  const texture = useLoader(TextureLoader, "textures/test.jpg");
+  const texture = useLoader(TextureLoader, image || "test.jpg");
   return (
     <group
       {...props}
-      rotation={[0, -Math.PI / 2, 0]}
-      position={[-20, 0, 5]}
+      rotation={rotation || [0, -Math.PI / 2, 0]}
+      position={position || [-20, 0, 5]}
       dispose={null}
     >
-      <group scale={0.05}>
+      <group scale={0.0522}>
         <group
           position={[1.05, 320.05, -230.66]}
           rotation={[0, Math.PI / 2, 0]}
