@@ -52,12 +52,14 @@ const App = () => {
         />
         <Suspense fallback={null}>
           {/* <Frame /> */}
-          <Plane />
-
-          <WallClassic />
+          {/* <WallClassic /> */}
           <group>
+            <Wall position={[0, 0, -50]} />
+            <Wall position={[0, 0, 50]} rotation={[0, -Math.PI * 1, 0]} />
+            <Wall position={[50, 0, 0]} rotation={[0, -Math.PI * 0.5, 0]} />
+            <Wall position={[-50, 0, 0]} rotation={[0, Math.PI * 0.5, 0]} />
             {/* <Wall position={[0, 20, -50]} /> */}
-            <WallClassic position={[0, 0, -50]} image="1.jpg" />
+            {/* <WallClassic position={[0, 0, -50]} image="1.jpg" />
             <WallClassic position={[-48, 0, -50]} image="2.jpg" />
             <WallClassic
               position={[50, 0, 0]}
@@ -78,11 +80,12 @@ const App = () => {
               position={[-50, 0, 48]}
               rotation={[0, -Math.PI * 2, 0]}
               image="6.jpg"
-            />
+            /> */}
             {/* <mesh position={[0, 20, -50]}>
               <boxGeometry args={[100, 40, 0.5]} />
               <meshStandardMaterial color={"gray"} />
             </mesh> */}
+            <Plane />
           </group>
           {/* <Plane2 /> */}
         </Suspense>

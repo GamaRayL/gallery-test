@@ -5,7 +5,7 @@ import { RepeatWrapping, TextureLoader } from "three";
 const Plane = (props) => {
   const texture = useLoader(
     TextureLoader,
-    "textures/wood_floor_deck_diff_4k.jpg"
+    "textures/laminate_floor_02_diff_4k.jpg"
   );
 
   if (texture) {
