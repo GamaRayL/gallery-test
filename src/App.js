@@ -1,15 +1,96 @@
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
+import { RepeatWrapping, SpotLightHelper, TextureLoader } from "three";
 import {
-  MeshReflectorMaterial,
   OrbitControls,
   PointerLockControls,
+  useHelper,
 } from "@react-three/drei";
-import "./App.css";
-import { Suspense, useEffect, useState } from "react";
-import Plane from "./Plane";
+import { useControls } from "leva";
+import PlaneF from "./PlaneF";
 import Wall from "./Wall";
-import WallClassic from "./models/WallClassic";
-import { RepeatWrapping, TextureLoader } from "three";
+import Frame from "./Frame";
+import "./App.css";
+// import { Bloom, EffectComposer } from "@react-three/postprocessing";
+
+const images = [
+  {
+    size: [3784, 5167],
+    position: [0, 12, -49.5],
+    rotation: [0, 0, 0],
+    url: "1.jpg",
+  },
+  {
+    size: [4048, 3879],
+    position: [30, 12, -49.5],
+    rotation: [0, 0, 0],
+    url: "2.jpg",
+  },
+  {
+    size: [3650, 4556],
+    position: [-30, 12, -49.5],
+    rotation: [0, 0, 0],
+    url: "3.jpg",
+  },
+  {
+    size: [5617, 3357],
+    position: [-49.5, 12, 0],
+    rotation: [0, Math.PI / 2, 0],
+    url: "4.jpg",
+  },
+  {
+    size: [4505, 6000],
+    position: [-49.5, 12, 30],
+    rotation: [0, Math.PI / 2, 0],
+    url: "5.jpg",
+  },
+  {
+    size: [4532, 6000],
+    position: [-49.5, 12, -30],
+    rotation: [0, Math.PI / 2, 0],
+    url: "6.jpg",
+  },
+  {
+    size: [5313, 6000],
+    position: [49.5, 12, 0],
+    rotation: [0, -Math.PI / 2, 0],
+    url: "7.jpg",
+  },
+  {
+    size: [5300, 3650],
+    position: [49.5, 12, 30],
+    rotation: [0, -Math.PI / 2, 0],
+    url: "8.jpg",
+  },
+  {
+    size: [4715, 3300],
+    position: [49.5, 12, -30],
+    rotation: [0, -Math.PI / 2, 0],
+    url: "9.jpg",
+  },
+];
+
+/* function LightScene() {
+  const { distance, intensity, angle, x } = useControls({
+    distance: { value: 5, min: 1, max: 350 },
+    intensity: { value: 1, min: 0, max: 5 },
+    angle: { value: Math.PI / 6, min: 0.1, max: 1 },
+    x: { value: 0, min: -200, max: 200 },
+  });
+  const spotLightRef = useRef();
+  useHelper(spotLightRef, SpotLightHelper, "red");
+
+  return (
+    <spotLight
+      castShadow
+      ref={spotLightRef}
+      position={[x, 40, 0]}
+      intensity={intensity}
+      distance={distance}
+      angle={angle}
+    />
+  );
+} */
 
 const App = () => {
   const [showInstructions, setShowInstructions] = useState(true);
@@ -38,21 +119,27 @@ const App = () => {
 
   return (
     <>
-      <Canvas camera={{ position: [0, 15, 40], zoom: 1 }}>
+      <Canvas shadows camera={{ position: [0, 75, 35], zoom: 1 }}>
         <PointerLockControls selector="#button" />
         <OrbitControls maxPolarAngle={1.45} />
-        <color args={[0, 2, 5]} attach="background" />
-        <hemisphereLight intensity={0.35} />
+        {/* <pointLight position={[5, 5, 5]} intensity={1} />
+        <pointLight position={[-3, -3, 2]} /> */}
+        {/* <color attach="background" args={["#191920"]} /> */}
+        {/* <hemisphereLight intensity={0.35} />
         <spotLight
-          position={[20, 20, 20]}
-          angle={1}
-          penumbra={1}
-          intensity={2}
-          castShadow
-        />
+        position={[20, 20, 20]}
+        angle={1}
+        penumbra={1}
+        intensity={2}
+        castShadow
+      /> */}
         <Suspense fallback={null}>
-          {/* <Frame /> */}
           {/* <WallClassic /> */}
+          {/* <LightScene /> */}
+
+          {images.map((props) => (
+            <Frame key={props.url} {...props} />
+          ))}
           <group>
             <Wall position={[0, 0, -50]} />
             <Wall position={[0, 0, 50]} rotation={[0, -Math.PI * 1, 0]} />
@@ -85,10 +172,12 @@ const App = () => {
               <boxGeometry args={[100, 40, 0.5]} />
               <meshStandardMaterial color={"gray"} />
             </mesh> */}
-            <Plane />
           </group>
           {/* <Plane2 /> */}
+          {/* <Environment preset="city" /> */}
+          <PlaneF />
         </Suspense>
+        {/* <Environment background preset="sunset" blur={0.8} /> */}
       </Canvas>
       <button style={{ position: "absolute", top: 0 }} id="button">
         Click To Enter
