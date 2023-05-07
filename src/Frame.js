@@ -31,6 +31,7 @@ function LightScene({ frameRef }) {
       distance={distance}
       angle={angle}
       target={target}
+      penumbra={1}
     />
   );
 }
