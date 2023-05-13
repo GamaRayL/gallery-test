@@ -19,8 +19,8 @@ const Wall = (props) => {
 
   return (
     <group position={position} rotation={rotation}>
-      <mesh position={[0, 13.5, 0]} castShadow receiveShadow>
-        <boxGeometry args={[100, 22, 1]} />
+      <mesh position={[0, 24, 0]} castShadow receiveShadow>
+        <boxGeometry args={[100, 52, 1]} />
         <meshStandardMaterial color={"gray"} />
       </mesh>
       <mesh castShadow receiveShadow>

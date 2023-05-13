@@ -3,6 +3,7 @@ import { useHelper } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { useControls } from "leva";
 import { SpotLightHelper, TextureLoader } from "three";
+import getUuid from "uuid-by-string";
 
 function LightScene({ frameRef }) {
   const [target, setTarget] = useState();
@@ -40,11 +41,15 @@ const Frame = ({ url, ...props }) => {
   const texture = useLoader(TextureLoader, url);
   const [width, height] = props.size;
   const frameRef = useRef();
+  const name = getUuid(url);
+
+  // console.log(name);
 
   return (
     <group {...props} ref={frameRef}>
       <LightScene frameRef={frameRef} />
       <group
+        name={name}
         position={[0, 2, 0.5]}
         scale={[width * 0.002, height * 0.002, 0.05]}
       >
